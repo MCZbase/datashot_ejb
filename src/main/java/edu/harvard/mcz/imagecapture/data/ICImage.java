@@ -21,6 +21,7 @@ public class ICImage implements java.io.Serializable {
 	private String uri;
 	private String templateId;
 	private String drawerNumber;
+	private String md5sum;  
 
 	public ICImage() {
 	}
@@ -30,7 +31,7 @@ public class ICImage implements java.io.Serializable {
 	}
 
 	public ICImage(Specimen specimen, String rawBarcode, String rawExifBarcode, String filename,
-			String rawOcr, String path, String uri, String templateId, String drawerNumber) {
+			String rawOcr, String path, String uri, String templateId, String drawerNumber, String md5sum) {
 		this.specimen = specimen;
 		this.rawBarcode = rawBarcode;
 		this.rawExifBarcode = rawExifBarcode;
@@ -40,6 +41,7 @@ public class ICImage implements java.io.Serializable {
 		this.uri = uri;
 		this.templateId = templateId;
 		setDrawerNumber(drawerNumber);
+		this.md5sum = md5sum;
 	}
 
 	public Long getImageId() {
@@ -138,6 +140,20 @@ public class ICImage implements java.io.Serializable {
 	    if (this.drawerNumber!=null && this.drawerNumber.length() > MetadataRetriever.getFieldLength(ICImage.class, "drawerNumber")) { 
 	        this.drawerNumber = this.drawerNumber.substring(0, MetadataRetriever.getFieldLength(ICImage.class, "drawerNumber")); 
 	    }	
+	}
+
+	/**
+	 * @return the md5sum
+	 */
+	public String getMd5sum() {
+		return md5sum;
+	}
+
+	/**
+	 * @param md5sum the md5sum to set
+	 */
+	public void setMd5sum(String md5sum) {
+		this.md5sum = md5sum;
 	}
 	
 }
