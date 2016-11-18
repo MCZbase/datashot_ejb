@@ -22,6 +22,18 @@ public class WorkFlowStatus {
 	 */
 	public static final String STAGE_1 = "Taxon Entered";
 	/**
+	 * Specimen record where the text from the pin labels has been transcribed into verbatim database fields
+	 * by a data entry person (or in an external transcription process).  Data transcribed into verbatim fields, 
+	 * but still needs to be interpreted further into atomic fields.
+	 */
+	public static final String STAGE_VERBATIM = "Verbatim Entered";
+	/**
+	 * Specimen record where the text from the pin labels has been transcribed into verbatim database fields
+	 * by a data entry person (or in an external transcription process) and this verbatim data has been 
+	 * further interpreted into atomic fields, but all data may not yet have been entered from the image.
+	 */	
+	public static final String STAGE_CLASSIFIED = "Verbatim Classified";	
+	/**
 	 * Specimen record where the text from the pin labels has been transcribed into database fields by a data
 	 * entry person.   Set to this level by any user of data entry or higher
 	 */
@@ -44,8 +56,8 @@ public class WorkFlowStatus {
 
 	public static final String STAGE_DONE = "Moved to MCZbase";
 
-	private static final String[] CHANGABLE_VALUES = {STAGE_0, STAGE_1, STAGE_2,STAGE_QC_FAIL,STAGE_QC_PASS,STAGE_CLEAN};
-	private static final String[] VALUES = {STAGE_0, STAGE_1, STAGE_2,STAGE_QC_FAIL,STAGE_QC_PASS,STAGE_CLEAN,STAGE_DONE};
+	private static final String[] CHANGABLE_VALUES = {STAGE_0, STAGE_1,  STAGE_VERBATIM, STAGE_CLASSIFIED, STAGE_2,STAGE_QC_FAIL,STAGE_QC_PASS,STAGE_CLEAN};
+	private static final String[] VALUES = {STAGE_0, STAGE_1, STAGE_VERBATIM, STAGE_CLASSIFIED, STAGE_2,STAGE_QC_FAIL,STAGE_QC_PASS,STAGE_CLEAN,STAGE_DONE};
 	
 	public static String[] getChangableWorkFlowStatusValues() {
 		String[] result = VALUES;  
@@ -55,5 +67,14 @@ public class WorkFlowStatus {
 		String[] result = VALUES;
 		return result;
 	}
+	
+	public static boolean allowsVerbatimUpdate(String workflowStatus) { 
+		boolean result = false;
+		
+		if (workflowStatus.equals(STAGE_0)) { result = true; } 
+		if (workflowStatus.equals(STAGE_1)) { result = true; } 
+		
+		return result;
+	}	
 
 }
