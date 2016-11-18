@@ -32,6 +32,12 @@ public abstract class WorkflowState {
              if (atState.equals(WorkFlowStatus.STAGE_1)) {
 					 result = new WorkflowStateTaxonEntered();
 			 }
+             if (atState.equals(WorkFlowStatus.STAGE_VERBATIM)) {
+					 result = new WorkflowStateTaxonEntered();
+			 }
+             if (atState.equals(WorkFlowStatus.STAGE_CLASSIFIED)) {
+					 result = new WorkflowStateTaxonEntered();
+			 }             
              if (atState.equals(WorkFlowStatus.STAGE_2)) {
 					 result = new WorkflowStateTextEntered();
 			 }
@@ -51,7 +57,7 @@ public abstract class WorkflowState {
 	 }
 
 	 public static boolean isStateValid(String aState) throws InvalidStateException {
-			 String[] validStates = WorkFlowStatus.getChangableWorkFlowStatusValues();
+			 String[] validStates = WorkFlowStatus.getAllWorkFlowStatusValues();
 			 boolean result = false;
 			 for (int x=0; x<validStates.length; x++) {
 				 if (validStates[x].equals(aState)) {
@@ -74,6 +80,8 @@ public abstract class WorkflowState {
 			ArrayList<String> states = new ArrayList<String>();
 			if (user.isUserRole(Users.ROLE_DATAENTRY)) {
 					states.add(WorkFlowStatus.STAGE_1);
+					states.add(WorkFlowStatus.STAGE_VERBATIM);
+					states.add(WorkFlowStatus.STAGE_CLASSIFIED);
 					states.add(WorkFlowStatus.STAGE_2);
 					states.add(WorkFlowStatus.STAGE_QC_FAIL);
 			}
@@ -104,6 +112,12 @@ public abstract class WorkflowState {
              if (newState.equals(WorkFlowStatus.STAGE_1)) {
 					 result = new WorkflowStateTaxonEntered();
 			 }
+             if (newState.equals(WorkFlowStatus.STAGE_VERBATIM)) {
+					 result = new WorkflowStateTaxonEntered();
+			 }
+             if (newState.equals(WorkFlowStatus.STAGE_CLASSIFIED)) {
+					 result = new WorkflowStateTaxonEntered();
+			 }              
              if (newState.equals(WorkFlowStatus.STAGE_2)) {
 					 result = new WorkflowStateTextEntered();
 			 }

@@ -198,6 +198,10 @@ public class MetadataRetriever {
             if (fieldname.equalsIgnoreCase("PrimaryDivision")) { length=255; }
             if (fieldname.equalsIgnoreCase("SpecificLocality")) { length=65535; }
             if (fieldname.equalsIgnoreCase("VerbatimLocality")) { length=65535; }
+            if (fieldname.equalsIgnoreCase("VerbatimCollector")) { length=65535; }
+            if (fieldname.equalsIgnoreCase("VerbatimCollection")) { length=65535; }
+            if (fieldname.equalsIgnoreCase("VerbatimNumbers")) { length=65535; }
+            if (fieldname.equalsIgnoreCase("VerbatimUnclassifiedText")) { length=65535; }
             //if (fieldname.equalsIgnoreCase("VerbatimElevation")) { length=255; }
             if (fieldname.equalsIgnoreCase("Minimum_Elevation")) { length=5; }
             if (fieldname.equalsIgnoreCase("Maximum_Elevation")) { length=5; }
@@ -367,6 +371,10 @@ public class MetadataRetriever {
             if (fieldname.equalsIgnoreCase("PrimaryDivision")) { help="The state, province, or other primary geopolitical division of the country from which this specimen was collected.  Inferred current name, not verbatim.  Infer if you have specialist knowlege and annotate in Inferences if doubtfull, border change, or not obvious."; }
             if (fieldname.equalsIgnoreCase("SpecificLocality")) { help="Placenames, offsets, and other text describing where this specimen was collected."; }
             if (fieldname.equalsIgnoreCase("VerbatimLocality")) { help="Verbatim transcription of locality information found on this specimen's labels.  Separate lines with a semicolon."; }
+            if (fieldname.equalsIgnoreCase("VerbatimCollector")) { help="Verbatim transcription of collector information found on this specimen's labels.  Separate collectors with a |  (pipe/vertical bar)."; }
+            if (fieldname.equalsIgnoreCase("VerbatimCollection")) { help="Verbatim transcription of previous collection (e.g. Mattoni Collection) information found on this specimen's labels."; }
+            if (fieldname.equalsIgnoreCase("VerbatimNumbers")) { help="Verbatim transcription of numbers found on this specimen's labels.  Separate numbers with a |  (pipe/vertical bar)."; }
+            if (fieldname.equalsIgnoreCase("VerbatimUnclassifiedText")) { help="Verbatim transcription of arbitrary text found on this specimen's labels.  Separate labels with a |  (pipe/vertical bar)."; }
             // if (fieldname.equalsIgnoreCase("VerbatimElevation")) { help="Verbatim transcription of elevation information, including units, found on this specimen's labels"; }
             if (fieldname.equalsIgnoreCase("Minumum_Elevation")) { help="Minimum elevation in units provided (m or ft or unknown), found on this specimen's labels"; }
             if (fieldname.equalsIgnoreCase("Maximum_Elevation")) { help="Maximum elevation in units provided, found on this specimen's labels.  Same value as minimum elevation if only one number is given."; }

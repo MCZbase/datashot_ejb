@@ -174,6 +174,19 @@ public class Specimen implements Serializable {
     //@Column(name = "VerbatimElevation", length = 255)
     //private String verbatimElevation;
     
+    @Column(name = "VerbatimCollector", length = 2000)
+    private String verbatimCollector;    
+    @Column(name = "VerbatimCollection", length = 2000)
+    private String verbatimCollection;   
+    @Column(name = "VerbatimNumbers", length = 2000)
+    private String verbatimNumbers;   
+    @Lob
+    @Column(name = "verbatimUnclassifiedText", length = 2000)
+    private String verbatimUnclassifiedText;   
+    
+
+    
+    
     @Column(name = "minimum_elevation")
     private BigInteger minimum_elevation;
     @Column(name = "maximum_elevation", length = 255)
@@ -689,6 +702,71 @@ public class Specimen implements Serializable {
         this.verbatimLocality = verbatimLocality;
     }
 
+ 
+    /**
+	 * @return the verbatimCollector
+	 */
+	public String getVerbatimCollector() {
+		return verbatimCollector;
+	}
+
+
+	/**
+	 * @param verbatimCollector the verbatimCollector to set
+	 */
+	public void setVerbatimCollector(String verbatimCollector) {
+		this.verbatimCollector = verbatimCollector;
+	}
+
+
+	/**
+	 * @return the verbatimCollection
+	 */
+	public String getVerbatimCollection() {
+		return verbatimCollection;
+	}
+
+
+	/**
+	 * @param verbatimCollection the verbatimCollection to set
+	 */
+	public void setVerbatimCollection(String verbatimCollection) {
+		this.verbatimCollection = verbatimCollection;
+	}
+
+
+	/**
+	 * @return the verbatimNumbers
+	 */
+	public String getVerbatimNumbers() {
+		return verbatimNumbers;
+	}
+
+
+	/**
+	 * @param verbatimNumbers the verbatimNumbers to set
+	 */
+	public void setVerbatimNumbers(String verbatimNumbers) {
+		this.verbatimNumbers = verbatimNumbers;
+	}
+
+
+	/**
+	 * @return the verbatimUnclassifiedText
+	 */
+	public String getVerbatimUnclassifiedText() {
+		return verbatimUnclassifiedText;
+	}
+
+
+	/**
+	 * @param verbatimUnclassifiedText the verbatimUnclassifiedText to set
+	 */
+	public void setVerbatimUnclassifiedText(String verbatimUnclassifiedText) {
+		this.verbatimUnclassifiedText = verbatimUnclassifiedText;
+	}    
+    
+    
 //    public String getVerbatimElevation() {
 //        return verbatimElevation;
 //    }
@@ -697,7 +775,8 @@ public class Specimen implements Serializable {
 //        this.verbatimElevation = verbatimElevation;
 //    }
 
-    /**
+
+	/**
 	 * @return the minimum_elevation
 	 */
 	public BigInteger getMinimum_elevation() {
@@ -1255,6 +1334,14 @@ public class Specimen implements Serializable {
 	public boolean isStateTaxonEntered() {
 		boolean result = false;
 		if (this.workFlowStatus.equals(WorkFlowStatus.STAGE_1)) {
+			result = true;
+		}
+		return result;
+	}
+	
+	public boolean isStateVerbatim() { 
+		boolean result = false;
+		if (this.workFlowStatus.equals(WorkFlowStatus.STAGE_VERBATIM)) { 
 			result = true;
 		}
 		return result;

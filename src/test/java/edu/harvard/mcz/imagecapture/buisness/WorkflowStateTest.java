@@ -156,6 +156,8 @@ public class WorkflowStateTest {
 				ArrayList<String> expectedList = new ArrayList<String>();
 				expectedList.add(WorkFlowStatus.STAGE_1);
 				expectedList.add(WorkFlowStatus.STAGE_2);
+				expectedList.add(WorkFlowStatus.STAGE_VERBATIM);
+				expectedList.add(WorkFlowStatus.STAGE_CLASSIFIED);
 				expectedList.add(WorkFlowStatus.STAGE_QC_FAIL);
 				List<String> result = WorkflowState.getAvailableStatesForUser(user);
 				assertEquals(expectedList.size(), result.size());
@@ -167,6 +169,8 @@ public class WorkflowStateTest {
 				expectedList = new ArrayList<String>();
 				expectedList.add(WorkFlowStatus.STAGE_1);
 				expectedList.add(WorkFlowStatus.STAGE_2);
+				expectedList.add(WorkFlowStatus.STAGE_VERBATIM);
+				expectedList.add(WorkFlowStatus.STAGE_CLASSIFIED);
 				expectedList.add(WorkFlowStatus.STAGE_QC_FAIL);
 				expectedList.add(WorkFlowStatus.STAGE_QC_PASS);
 				result = WorkflowState.getAvailableStatesForUser(user);
@@ -179,6 +183,8 @@ public class WorkflowStateTest {
 				expectedList = new ArrayList<String>();
 				expectedList.add(WorkFlowStatus.STAGE_1);
 				expectedList.add(WorkFlowStatus.STAGE_2);
+				expectedList.add(WorkFlowStatus.STAGE_VERBATIM);
+				expectedList.add(WorkFlowStatus.STAGE_CLASSIFIED);
 				expectedList.add(WorkFlowStatus.STAGE_QC_FAIL);
 				expectedList.add(WorkFlowStatus.STAGE_QC_PASS);
 				expectedList.add(WorkFlowStatus.STAGE_CLEAN);
@@ -192,6 +198,8 @@ public class WorkflowStateTest {
 				expectedList = new ArrayList<String>();
 				expectedList.add(WorkFlowStatus.STAGE_1);
 				expectedList.add(WorkFlowStatus.STAGE_2);
+				expectedList.add(WorkFlowStatus.STAGE_VERBATIM);
+				expectedList.add(WorkFlowStatus.STAGE_CLASSIFIED);
 				expectedList.add(WorkFlowStatus.STAGE_QC_FAIL);
 				expectedList.add(WorkFlowStatus.STAGE_QC_PASS);
 				expectedList.add(WorkFlowStatus.STAGE_CLEAN);
@@ -206,6 +214,8 @@ public class WorkflowStateTest {
 				expectedList.add(WorkFlowStatus.STAGE_0);
 				expectedList.add(WorkFlowStatus.STAGE_1);
 				expectedList.add(WorkFlowStatus.STAGE_2);
+				expectedList.add(WorkFlowStatus.STAGE_VERBATIM);
+				expectedList.add(WorkFlowStatus.STAGE_CLASSIFIED);
 				expectedList.add(WorkFlowStatus.STAGE_QC_FAIL);
 				expectedList.add(WorkFlowStatus.STAGE_QC_PASS);
 				expectedList.add(WorkFlowStatus.STAGE_CLEAN);

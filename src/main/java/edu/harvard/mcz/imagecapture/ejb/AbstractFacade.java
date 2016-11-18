@@ -165,6 +165,8 @@ public abstract class AbstractFacade<T> {
 		cq.select(cq.from(entityClass));
 
 		logger.log(Level.INFO, "findRangeQueryAndOr on " + entityClass.getName());
+		
+		//TODO: Execution is slow, observing 3-10 seconds on monitoring.
 
 		Set<Root> roots = cq.getRoots();
 		Root r = null;

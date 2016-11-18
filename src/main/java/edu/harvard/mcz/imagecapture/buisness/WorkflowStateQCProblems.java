@@ -23,6 +23,12 @@ public class WorkflowStateQCProblems extends WorkflowState {
                 if (newState.equals(WorkFlowStatus.STAGE_0)) {
 						throw new NotAllowedStateException("Can't revert a record to state " + WorkFlowStatus.STAGE_0 + " from state " + this.getState());
 				}
+                if (newState.equals(WorkFlowStatus.STAGE_VERBATIM)) {
+						throw new NotAllowedStateException("Can't revert a record to state " + WorkFlowStatus.STAGE_VERBATIM + " from state " + this.getState());
+				}	
+                if (newState.equals(WorkFlowStatus.STAGE_CLASSIFIED)) {
+						throw new NotAllowedStateException("Can't revert a record to state " + WorkFlowStatus.STAGE_CLASSIFIED + " from state " + this.getState());
+				}                
 				if (newState.equals(WorkFlowStatus.STAGE_1) ) {
 						if (aUser.isUserRole(Users.ROLE_FULL)) {
                                 result = new WorkflowStateTaxonEntered();
