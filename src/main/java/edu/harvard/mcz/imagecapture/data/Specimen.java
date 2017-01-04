@@ -169,19 +169,19 @@ public class Specimen implements Serializable {
     @Column(name = "SpecificLocality", length = 65535)
     private String specificLocality;
     @Lob
-    @Column(name = "VerbatimLocality", length = 65535)
+    @Column(name = "VerbatimLocality", length = 65535, nullable = false)
     private String verbatimLocality;
     //@Column(name = "VerbatimElevation", length = 255)
     //private String verbatimElevation;
     
-    @Column(name = "VerbatimCollector", length = 2000)
+    @Column(name = "VerbatimCollector", length = 2000, nullable = false)
     private String verbatimCollector;    
-    @Column(name = "VerbatimCollection", length = 2000)
+    @Column(name = "VerbatimCollection", length = 2000, nullable = false)
     private String verbatimCollection;   
-    @Column(name = "VerbatimNumbers", length = 2000)
+    @Column(name = "VerbatimNumbers", length = 2000, nullable = false)
     private String verbatimNumbers;   
     @Lob
-    @Column(name = "verbatimUnclassifiedText", length = 2000)
+    @Column(name = "verbatimUnclassifiedText", length = 2000, nullable = false)
     private String verbatimUnclassifiedText;   
     
 
