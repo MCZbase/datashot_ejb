@@ -1346,6 +1346,14 @@ public class Specimen implements Serializable {
 		}
 		return result;
 	}
+	
+	public boolean isStateVerbatimClassified() { 
+		boolean result = false;
+		if (this.workFlowStatus.equals(WorkFlowStatus.STAGE_CLASSIFIED)) { 
+			result = true;
+		}
+		return result;
+	}	
 
 	public boolean isStateTextEntered() {
 		boolean result = false;
