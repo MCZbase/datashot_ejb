@@ -302,5 +302,20 @@ public class Image implements Serializable {
 		return result;
 	}
 	
+	/**
+	 * Test of whether the image file exists at the expected location or not.
+	 * 
+	 * @return true if the base/pathbelowbase/filename for this image in the local configuration for base exists.
+	 */
+	public boolean isFileExists() {
+		boolean result = false;
+		String filename = ImageCaptureProperties.assemblePathWithBase(this.getPath(), this.getFilename());
+	    File file = new File(filename);
+		if (file.exists()) {
+			result = true;
+		}
+		return result;
+	}	
+	
 	
 }
