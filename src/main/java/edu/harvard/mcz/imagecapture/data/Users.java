@@ -6,7 +6,9 @@ package edu.harvard.mcz.imagecapture.data;
 
 import edu.harvard.mcz.imagecapture.exceptions.PasswordStrengthException;
 import edu.harvard.mcz.imagecapture.utility.AuthenticationUtility;
+
 import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,6 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 /**
@@ -82,6 +85,12 @@ public class Users implements Serializable {
 	@Column(name = "hash", length = 41)
 	private String hash;
 
+	/*
+	 * Temporary copy of new password to be stored as hash.
+	 */
+	@Transient
+	private String password;
+	
 	public Users() {
 	}
 
@@ -157,21 +166,36 @@ public class Users implements Serializable {
 	public void setHash(String hash) {
 		this.hash = hash;
 	}
-
-	public void setNewPassword(String password) throws PasswordStrengthException {
+	
+	/**
+	 * Take the value of the new password, and if it is not null, not empty, 
+	 * and passes the strength rules, then save it.
+	 * 
+	 * @return true if password hash was updated, false if password was empty and it was not.
+	 * @throws PasswordStrengthException if password is non-empty if strength rules are not met.
+	 */
+	public boolean updateHashFromNewPassword() throws PasswordStrengthException { 
+		boolean result = false;
 		// if password is null, do nothing.
-		if (password != null) {
+		if (password != null ) {
 			// if password is an empty string, do nothing
 			if (!password.trim().isEmpty()) {
 				// test if password is strong enough
 				if (AuthenticationUtility.isPasswordStrongEnough(password)) {
 					this.hash = AuthenticationUtility.hashPassword(password);
+					result = true;
 				} else {
 					throw new PasswordStrengthException("Password is not strong enough");
 				}
 			}
-		}
+		}	
+		return result;
 	}
+
+	public void setNewPassword(String password)  {
+       this.password = password;
+	}
+	
 
 	/** Dummy method to allow JSF to bind to get/set newPassword,
 	 *  fills a set new password control with an empty string.
