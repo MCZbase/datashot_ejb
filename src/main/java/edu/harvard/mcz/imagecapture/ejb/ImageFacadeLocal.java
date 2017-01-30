@@ -33,6 +33,8 @@ public interface ImageFacadeLocal {
 	List<Image> findRange(int[] range);
 
 	int count();
+	
+	int countFiltered(Map<String, String> filters);	
 
 	public List<Image> findByImageId(long imageId);
 
