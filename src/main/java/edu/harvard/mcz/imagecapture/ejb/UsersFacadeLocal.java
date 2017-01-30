@@ -6,8 +6,10 @@
 package edu.harvard.mcz.imagecapture.ejb;
 
 import edu.harvard.mcz.imagecapture.data.Users;
+
 import java.util.List;
-import javax.annotation.security.DenyAll;
+import java.util.Map;
+
 import javax.ejb.Local;
 
 /**
@@ -28,7 +30,11 @@ public interface UsersFacadeLocal {
 	List<Users> findAll();
 
 	List<Users> findRange(int[] range);
+	
+	List<Users> findRangeQuery(int[] range, String[] sortFields, boolean sortOrder, Map<String, String> filters);
 
+	int countFiltered(Map<String, String> filters);
+	
 	int count();
 
 	List<Users> authenticate(String username, String password);
