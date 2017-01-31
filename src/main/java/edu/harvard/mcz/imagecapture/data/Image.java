@@ -86,6 +86,8 @@ public class Image implements Serializable {
 	private String templateId;
 	@Column(name = "DRAWERNUMBER", length = 10)
 	private String drawernumber;
+	@Column(name = "MD5SUM", length = 900) 
+	private String md5sum;
 	@JoinColumn(name = "SpecimenId", referencedColumnName = "SpecimenId")
 	@ManyToOne
 	private Specimen specimenId;
@@ -317,5 +319,18 @@ public class Image implements Serializable {
 		return result;
 	}	
 	
+	/**
+	 * @return the md5sum
+	 */
+	public String getMd5sum() {
+		return md5sum;
+	}
+
+	/**
+	 * @param md5sum the md5sum to set
+	 */
+	public void setMd5sum(String md5sum) {
+		this.md5sum = md5sum;
+	}	
 	
 }

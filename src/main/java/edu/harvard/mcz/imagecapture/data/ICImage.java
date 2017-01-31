@@ -23,13 +23,16 @@ public class ICImage implements java.io.Serializable {
 	private String drawerNumber;
 	private String md5sum;  
 
+	@Deprecated 
 	public ICImage() {
 	}
 
+	@Deprecated 
 	public ICImage(Specimen specimen) {
 		this.specimen = specimen;
 	}
 
+	@Deprecated 
 	public ICImage(Specimen specimen, String rawBarcode, String rawExifBarcode, String filename,
 			String rawOcr, String path, String uri, String templateId, String drawerNumber, String md5sum) {
 		this.specimen = specimen;
@@ -44,26 +47,32 @@ public class ICImage implements java.io.Serializable {
 		this.md5sum = md5sum;
 	}
 
+	@Deprecated 
 	public Long getImageId() {
 		return this.imageId;
 	}
 
+	@Deprecated 
 	public void setImageId(Long imageId) {
 		this.imageId = imageId;
 	}
 
+	@Deprecated 
 	public Specimen getSpecimen() {
 		return this.specimen;
 	}
 
+	@Deprecated 
 	public void setSpecimen(Specimen specimen) {
 		this.specimen = specimen;
 	}
 
+	@Deprecated 
 	public String getRawBarcode() {
 		return this.rawBarcode;
 	}
 
+	@Deprecated 
 	public void setRawBarcode(String rawBarcode) {
 		this.rawBarcode = rawBarcode;
 	    if (this.rawBarcode!=null && this.rawBarcode.length() > MetadataRetriever.getFieldLength(ICImage.class, "rawBarcode")) { 
@@ -71,10 +80,12 @@ public class ICImage implements java.io.Serializable {
 	    }
 	}
 	
+	@Deprecated 
 	public String getRawExifBarcode() {
 		return this.rawExifBarcode;
 	}
 
+	@Deprecated 
 	public void setRawExifBarcode(String rawExifBarcode) {
 		this.rawExifBarcode = rawExifBarcode;
 	    if (this.rawExifBarcode!=null && this.rawExifBarcode.length() > MetadataRetriever.getFieldLength(ICImage.class, "rawExifBarcode")) { 
@@ -82,18 +93,22 @@ public class ICImage implements java.io.Serializable {
 	    }		
 	}	
 
+	@Deprecated 
 	public String getFilename() {
 		return this.filename;
 	}
 
+	@Deprecated 
 	public void setFilename(String filename) {
 		this.filename = filename;
 	}
 
+	@Deprecated 
 	public String getRawOcr() {
 		return this.rawOcr;
 	}
 
+	@Deprecated 
 	public void setRawOcr(String rawOcr) {
 		this.rawOcr = rawOcr;
 	    if (this.rawOcr!=null && this.rawOcr.length() > MetadataRetriever.getFieldLength(ICImage.class, "rawOcr")) { 
@@ -101,26 +116,32 @@ public class ICImage implements java.io.Serializable {
 	    }		
 	}
 
+	@Deprecated 
 	public String getPath() {
 		return this.path;
 	}
 
+	@Deprecated 
 	public void setPath(String path) {
 		this.path = path;
 	}
 
+	@Deprecated 
 	public String getUri() {
 		return this.uri;
 	}
 
+	@Deprecated 
 	public void setUri(String uri) {
 		this.uri = uri;
 	}
 
+	@Deprecated 
 	public String getTemplateId() {
 		return templateId;
 	}
 
+	@Deprecated 
 	public void setTemplateId(String templateId) {
 		this.templateId = templateId;
 	}
@@ -128,6 +149,7 @@ public class ICImage implements java.io.Serializable {
 	/**
 	 * @return the drawerNumber
 	 */
+	@Deprecated 
 	public String getDrawerNumber() {
 		return drawerNumber;
 	}
@@ -135,6 +157,7 @@ public class ICImage implements java.io.Serializable {
 	/**
 	 * @param drawerNumber the drawerNumber to set
 	 */
+	@Deprecated 
 	public void setDrawerNumber(String drawerNumber) {
 		this.drawerNumber = drawerNumber;
 	    if (this.drawerNumber!=null && this.drawerNumber.length() > MetadataRetriever.getFieldLength(ICImage.class, "drawerNumber")) { 
@@ -145,6 +168,7 @@ public class ICImage implements java.io.Serializable {
 	/**
 	 * @return the md5sum
 	 */
+	@Deprecated 
 	public String getMd5sum() {
 		return md5sum;
 	}
@@ -152,6 +176,7 @@ public class ICImage implements java.io.Serializable {
 	/**
 	 * @param md5sum the md5sum to set
 	 */
+	@Deprecated 
 	public void setMd5sum(String md5sum) {
 		this.md5sum = md5sum;
 	}
