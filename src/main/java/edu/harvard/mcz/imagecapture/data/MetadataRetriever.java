@@ -274,6 +274,16 @@ public class MetadataRetriever {
 			if (fieldname.equalsIgnoreCase("templateId")) { length=50; }
 			if (fieldname.equalsIgnoreCase("drawerNumber")) { length=10; }			
 		}	
+		if (aTableClass==Image.class) { 
+			if (fieldname.equalsIgnoreCase("rawBarcode")) { length=50; }	
+			if (fieldname.equalsIgnoreCase("rawExifBarcode")) { length=50; }
+			if (fieldname.equalsIgnoreCase("filename")) { length=50; }
+			if (fieldname.equalsIgnoreCase("rawOcr")) { length=65535; }
+			if (fieldname.equalsIgnoreCase("path")) { length=900; }
+			if (fieldname.equalsIgnoreCase("uri")) { length=50; }
+			if (fieldname.equalsIgnoreCase("templateId")) { length=50; }
+			if (fieldname.equalsIgnoreCase("drawerNumber")) { length=10; }			
+		}		
 		if (aTableClass==SpecimenPart.class) { 
 			if (fieldname.equalsIgnoreCase("Part_Name")) { length = 255; }	
 			if (fieldname.equalsIgnoreCase("Preserve_Method")){ length = 60; }	
