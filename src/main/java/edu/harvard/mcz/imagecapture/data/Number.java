@@ -15,47 +15,58 @@ public class Number implements java.io.Serializable {
 	private String number;
 	private String numberType;
 
+    @Deprecated
 	public Number() {
 	}
 
+    @Deprecated
 	public Number(Specimen specimen) {
 		this.specimen = specimen;;
 	}
 
+    @Deprecated
 	public Number(Specimen specimen, String number, String numberType) {
 		this.specimen = specimen;
 		this.number = number;
 		this.numberType = numberType;
 	}
 
+    @Deprecated
 	public Long getNumberId() {
 		return this.numberId;
 	}
 
+    @Deprecated
 	public void setNumberId(Long numberId) {
 		this.numberId = numberId;
 	}
 
+    @Deprecated
 	public Specimen getSpecimen() {
 		return this.specimen;
 	}
 
+    @Deprecated
 	public void setSpecimen(Specimen specimen) {
 		this.specimen = specimen;
 	}
 
+    @Deprecated
 	public String getNumber() {
 		return this.number;
 	}
 
+    @Deprecated
 	public void setNumber(String number) {
 		this.number = number;
 	}
 
+    @Deprecated
 	public String getNumberType() {
 		return this.numberType;
 	}
 
+    @Deprecated
 	public void setNumberType(String numberType) {
 		this.numberType = numberType;
 	}

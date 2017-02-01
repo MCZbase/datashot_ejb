@@ -6,12 +6,8 @@
  */
 package edu.harvard.mcz.imagecapture.data;
 
-import java.awt.Color;
 import java.text.ParseException;
 
-import javax.swing.InputVerifier;
-import javax.swing.JComponent;
-import javax.swing.JTextField;
 import javax.swing.text.MaskFormatter;
 
 import edu.harvard.mcz.imagecapture.ImageCaptureApp;
@@ -231,8 +227,8 @@ public class MetadataRetriever {
             if (fieldname.equalsIgnoreCase("ValidDistributionFlag")) {  length = 1; }
             if (fieldname.equalsIgnoreCase("Path")) { length=900; }
 		}
-		if (aTableClass==Number.class) { 
-			if (fieldname.equalsIgnoreCase("Number")) { length=50; }	
+		if (aTableClass==OtherNumbers.class) { 
+			if (fieldname.equalsIgnoreCase("OtherNumber")) { length=50; }	
 			if (fieldname.equalsIgnoreCase("NumberType")) { length=50; }	
 		}
 		if (aTableClass==Collector.class) { 
@@ -263,7 +259,7 @@ public class MetadataRetriever {
 			if (fieldname.equalsIgnoreCase("description")) { length=255; }	
 			if (fieldname.equalsIgnoreCase("role")) { length=20; }	
 		}
-		
+		/**
 		if (aTableClass==ICImage.class) { 
 			if (fieldname.equalsIgnoreCase("rawBarcode")) { length=50; }	
 			if (fieldname.equalsIgnoreCase("rawExifBarcode")) { length=50; }
@@ -274,6 +270,7 @@ public class MetadataRetriever {
 			if (fieldname.equalsIgnoreCase("templateId")) { length=50; }
 			if (fieldname.equalsIgnoreCase("drawerNumber")) { length=10; }			
 		}	
+		*/
 		if (aTableClass==Image.class) { 
 			if (fieldname.equalsIgnoreCase("rawBarcode")) { length=50; }	
 			if (fieldname.equalsIgnoreCase("rawExifBarcode")) { length=50; }
@@ -413,8 +410,8 @@ public class MetadataRetriever {
             if (fieldname.equalsIgnoreCase("LastUpdatedBy")){ help="The name of the person who most recenly updated this record.";  }
             if (fieldname.equalsIgnoreCase("ValidDistributionFlag")) {  help = "Uncheck if the locality does not reflect the collection of this specimen from nature (e.g. uncheck for specimens that came from a captive breeding program).  Leave checked if locality represents natural biological range. "; }
 		}
-		if (aTableClass==Number.class) { 
-			if (fieldname.equalsIgnoreCase("Number")) { help="A number (including alphanumeric identifiers) found on a label of this specimen. Are there any numbers, of known or unknown nature on the label or on separate labels? "; }
+		if (aTableClass==OtherNumbers.class) { 
+			if (fieldname.equalsIgnoreCase("OtherNumber")) { help="A number (including alphanumeric identifiers) found on a label of this specimen. Are there any numbers, of known or unknown nature on the label or on separate labels? "; }
 			if (fieldname.equalsIgnoreCase("NumberType")) { help="If known, what sort of number this is and where it came from."; }	
 		}
 		if (aTableClass==Collector.class) { 
