@@ -264,9 +264,9 @@ public class Specimen implements Serializable {
     private Collection<Determination> determinationCollection;
     @OneToMany(mappedBy = "specimenId", fetch=FetchType.EAGER)
     private Collection<Image> imageCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "specimenId", fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "specimenId", fetch=FetchType.EAGER, orphanRemoval=true)
     private Collection<OtherNumbers> otherNumbersCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "specimenId", fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "specimenId", fetch=FetchType.EAGER, orphanRemoval=true)
     private Collection<Collector> collectorCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "specimenId", fetch=FetchType.EAGER)
     private Collection<Tracking> trackingCollection;
@@ -1154,6 +1154,10 @@ public class Specimen implements Serializable {
     public void setOtherNumbersCollection(Collection<OtherNumbers> otherNumbersCollection) {
         this.otherNumbersCollection = (Collection<OtherNumbers>)otherNumbersCollection;
     }
+    
+    public boolean removeFromOtherNumbersCollection(OtherNumbers numberToRemove) { 
+    	return this.otherNumbersCollection.remove(numberToRemove);
+    }
 
     public Collection<Collector> getCollectorCollection() {
         return collectorCollection;
@@ -1161,6 +1165,10 @@ public class Specimen implements Serializable {
 
     public void setCollectorCollection(Collection<Collector> collectorCollection) {
         this.collectorCollection = (Collection<Collector>)collectorCollection;
+    }
+    
+    public boolean removeFromCollectorCollection(Collector collectorToRemove) { 
+    	return this.collectorCollection.remove(collectorToRemove);
     }
 
     public Collection<Tracking> getTrackingCollection() {
