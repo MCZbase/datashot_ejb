@@ -260,7 +260,7 @@ public class Specimen implements Serializable {
     private String creatingPath;   // A path for image file, denormalized from Image.path for JPA query without join to Image. 
     @Column(name = "creatingFilename", length = 255)
     private String creatingFilename; 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "specimenId", fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "specimenId", fetch=FetchType.EAGER, orphanRemoval=true)
     private Collection<Determination> determinationCollection;
     @OneToMany(mappedBy = "specimenId", fetch=FetchType.EAGER)
     private Collection<Image> imageCollection;
@@ -270,7 +270,7 @@ public class Specimen implements Serializable {
     private Collection<Collector> collectorCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "specimenId", fetch=FetchType.EAGER)
     private Collection<Tracking> trackingCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "specimenId", fetch=FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "specimenId", fetch=FetchType.EAGER, orphanRemoval=true)
     private Collection<SpecimenPart> partCollection;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "specimenId", fetch=FetchType.EAGER)
     private LatLong georeference;
@@ -1138,6 +1138,16 @@ public class Specimen implements Serializable {
         this.determinationCollection = (Collection<Determination>)determinationCollection;
 		logger.log(Level.INFO,this.determinationCollection.toString());
     }
+    
+    /**
+     * Remove a determination from the list of related determinations
+     * 
+     * @param detToRemove determination to remove from the collection.
+     * @return true if successful
+     */
+    public boolean removeFromDeterminationCollection(Determination detToRemove) { 
+    	return this.determinationCollection.remove(detToRemove);
+    }
 
     public Collection<Image> getImageCollection() {
         return imageCollection;
@@ -1155,6 +1165,12 @@ public class Specimen implements Serializable {
         this.otherNumbersCollection = (Collection<OtherNumbers>)otherNumbersCollection;
     }
     
+    /**
+     * Remove a number from the list of other numbers. 
+     * 
+     * @param numberToRemove number to remove from the collection
+     * @return true on success.
+     */
     public boolean removeFromOtherNumbersCollection(OtherNumbers numberToRemove) { 
     	return this.otherNumbersCollection.remove(numberToRemove);
     }
@@ -1167,6 +1183,12 @@ public class Specimen implements Serializable {
         this.collectorCollection = (Collection<Collector>)collectorCollection;
     }
     
+    /**
+     * Remove a collector from the list of related collectors.
+     * 
+     * @param collectorToRemove collector to remove from the collection.
+     * @return true on success.
+     */
     public boolean removeFromCollectorCollection(Collector collectorToRemove) { 
     	return this.collectorCollection.remove(collectorToRemove);
     }
@@ -1188,6 +1210,15 @@ public class Specimen implements Serializable {
 		this.partCollection = partCollection;
 	}
 
+	/**
+	 * Remove a part from the list of parts for the specimen.
+	 * 
+	 * @param partToRemove part to remove from the list.
+	 * @return true if successful
+	 */
+    public boolean removeFromPartCollection(SpecimenPart partToRemove) { 
+    	return this.partCollection.remove(partToRemove);
+    }	
 
 	/**
 	 * @return the georeference
