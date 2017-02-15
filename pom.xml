@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>edu.harvard.mcz</groupId>
   <artifactId>datashot_ejb</artifactId>
-  <version>1.2.3</version>
+  <version>1.2.4-SNAPSHOT</version>
   <!-- remember to edit src/main/java/edu/harvard/mcz/imagecapture/ImageCaptureApp.java -->
   <packaging>jar</packaging>
   <properties>
