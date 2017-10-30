@@ -171,7 +171,7 @@ public class Specimen implements Serializable {
     @Lob
     @Column(name = "VerbatimLocality", length = 65535, nullable = false)
     private String verbatimLocality;
-    //@Column(name = "VerbatimElevation", length = 255)
+    //@Column(name = "VerbatimElevation", length = 255)  // removed
     //private String verbatimElevation;
     
     @Column(name = "VerbatimCollector", length = 2000, nullable = false)
@@ -184,8 +184,13 @@ public class Specimen implements Serializable {
     @Column(name = "verbatimUnclassifiedText", length = 2000, nullable = false)
     private String verbatimUnclassifiedText;   
     
-
-    
+    @Column(name = "verbatimClusterIdentifier", length = 255, nullable = false)
+    private String verbatimClusterIdentifier;   
+    @Column(name = "externalWorkflowProcess", length = 900, nullable = false)
+    private String externalWorkflowProcess; 
+    @Column(name = "externalWorkflowDate", nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date externalWorkflowDate;
     
     @Column(name = "minimum_elevation")
     private BigInteger minimum_elevation;
@@ -774,6 +779,54 @@ public class Specimen implements Serializable {
 //    public void setVerbatimElevation(String verbatimElevation) {
 //        this.verbatimElevation = verbatimElevation;
 //    }
+
+
+	/**
+	 * @return the verbatimClusterIdentifier
+	 */
+	public String getVerbatimClusterIdentifier() {
+		return verbatimClusterIdentifier;
+	}
+
+
+	/**
+	 * @param verbatimClusterIdentifier the verbatimClusterIdentifier to set
+	 */
+	public void setVerbatimClusterIdentifier(String verbatimClusterIdentifier) {
+		this.verbatimClusterIdentifier = verbatimClusterIdentifier;
+	}
+
+
+	/**
+	 * @return the externalWorkflowProcess
+	 */
+	public String getExternalWorkflowProcess() {
+		return externalWorkflowProcess;
+	}
+
+
+	/**
+	 * @param externalWorkflowProcess the externalWorkflowProcess to set
+	 */
+	public void setExternalWorkflowProcess(String externalWorkflowProcess) {
+		this.externalWorkflowProcess = externalWorkflowProcess;
+	}
+
+
+	/**
+	 * @return the externalWorkflowDate
+	 */
+	public Date getExternalWorkflowDate() {
+		return externalWorkflowDate;
+	}
+
+
+	/**
+	 * @param externalWorkflowDate the externalWorkflowDate to set
+	 */
+	public void setExternalWorkflowDate(Date externalWorkflowDate) {
+		this.externalWorkflowDate = externalWorkflowDate;
+	}
 
 
 	/**
