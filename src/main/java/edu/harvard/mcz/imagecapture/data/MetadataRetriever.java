@@ -7,6 +7,8 @@
 package edu.harvard.mcz.imagecapture.data;
 
 import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.text.MaskFormatter;
 
@@ -22,6 +24,8 @@ import edu.harvard.mcz.imagecapture.ImageCaptureApp;
  *
  */
 public class MetadataRetriever {
+	
+	private final static Logger logger = Logger.getLogger(MetadataRetriever.class.getName());
 	
 	private static String repeat(String s, int count) { 
 		StringBuffer result = new StringBuffer();

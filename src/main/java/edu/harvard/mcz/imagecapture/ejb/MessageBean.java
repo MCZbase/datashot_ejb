@@ -16,7 +16,7 @@ import javax.faces.context.FacesContext;
  *
  * @author mole
  */
-@Singleton
+@Singleton(name="messageBean")
 public class MessageBean  {
     
     private List<String> messages = Collections.synchronizedList(new LinkedList<String>());

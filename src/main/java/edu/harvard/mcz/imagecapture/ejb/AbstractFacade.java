@@ -24,7 +24,6 @@ import java.util.logging.Logger;
 import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CollectionJoin;
@@ -35,8 +34,6 @@ import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Order;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-
-import org.eclipse.persistence.internal.jpa.EJBQueryImpl;
 
 
 /**
@@ -240,7 +237,7 @@ public abstract class AbstractFacade<T> {
 		cq = this.constructCriteriaQuery(filters, useAnd, cq, cb, r, join, joini);
 		cq.distinct(true);
 		javax.persistence.Query q = getEntityManager().createQuery(cq);
-		logger.log(Level.INFO, q.unwrap(EJBQueryImpl.class).getDatabaseQuery().getSQLString());
+		//logger.log(Level.INFO, q.unwrap(QueryImpl.class).getDatabaseQuery().getSQLString());
 		if (range.length>0) { 
 		   q.setMaxResults(range[1] - range[0]);
 		   q.setFirstResult(range[0]);

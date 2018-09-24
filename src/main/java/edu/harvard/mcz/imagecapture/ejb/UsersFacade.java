@@ -22,7 +22,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author mole
  */
-@Stateless
+@Stateless(name="usersFacade")
 @DeclareRoles(value = {"Administrator","Data entry","Full Access","Editor","Chief Editor"})
 @RolesAllowed(value = {"Administrator","Data entry","Full Access","Editor","Chief Editor"})
 public class UsersFacade extends AbstractFacade<Users> implements UsersFacadeLocal {

@@ -4,7 +4,6 @@
  */
 package edu.harvard.mcz.imagecapture.data;
 
-import edu.harvard.mcz.imagecapture.ejb.AbstractFacade;
 
 import java.io.Serializable;
 import java.math.BigInteger;

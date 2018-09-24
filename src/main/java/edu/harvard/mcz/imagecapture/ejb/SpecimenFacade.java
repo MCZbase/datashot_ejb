@@ -43,7 +43,7 @@ import org.eclipse.persistence.sessions.CopyGroup;
  *
  * @author mole
  */
-@Stateless
+@Stateless(name="specimenFacade")
 @DeclareRoles(value = {"Administrator","Data entry","Full Access","Editor","Chief Editor"})
 @RolesAllowed(value = {"Administrator","Data entry","Full Access","Editor","Chief Editor"})
 public class SpecimenFacade extends AbstractFacade<Specimen> implements SpecimenFacadeLocal {
