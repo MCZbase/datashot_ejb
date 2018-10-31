@@ -5,12 +5,16 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.logging.Level;
+
 import javax.ejb.Singleton;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -21,6 +25,8 @@ public class MessageBean  {
     
     private List<String> messages = Collections.synchronizedList(new LinkedList<String>());
 
+    private List<String> users = Collections.synchronizedList(new LinkedList<String>());
+    
 	private boolean latestFromServer = false;
 	private int userCount = 0;
 
@@ -84,4 +90,17 @@ public class MessageBean  {
 		return messages.size();
 	}
 
+	public void setUserList(List<String> userList) {
+		if (userList!=null) { 
+			users.clear();
+			Iterator<String> i = userList.iterator();
+			while (i.hasNext()) { 
+				users.add(i.next());
+			}
+		}
+	}
+	
+	public List<String> getUserList() { 
+		return users;
+	}
 }
