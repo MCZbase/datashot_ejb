@@ -1,7 +1,6 @@
 package edu.harvard.mcz.imagecapture.ejb;
 
 
-import java.security.Principal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -15,16 +14,12 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.security.DeclareRoles;
-import javax.annotation.security.RolesAllowed;
-import javax.ejb.EJB;
-import javax.ejb.LocalBean;
 import javax.ejb.Singleton;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 
 /**
+ * Maintains a list of up to 100 most recent messages, count of user logins/logouts, and a list of 
+ * active usernames, maintains list while application is running, but doesn't provide persistence between
+ * web application or container or server restarts. 
  *
  * @author mole
  */
@@ -36,9 +31,6 @@ public class MessageBean  {
     private List<String> messages = Collections.synchronizedList(new LinkedList<String>());
 
     private List<String> users = Collections.synchronizedList(new LinkedList<String>());
-    
-//	@EJB(beanName="usersFacade")
-//	private UsersFacadeLocal usersFacade;
     
 	private boolean latestFromServer = false;
 	private int userCount = 0;
@@ -58,37 +50,41 @@ public class MessageBean  {
 
     public static final String SERVER_MESSAGE_SOURCE = "Server";
 
-	public void addMessage(String user, String message) {
-		if (messages.size()>100) {
-			messages.remove(0);
-		}
-		message.replaceAll("<", "&lt;");
-		message.replaceAll(">", "&gt;");
-		if (user.equals(SERVER_MESSAGE_SOURCE)) {
-			latestFromServer = true;
-		} else {
-			latestFromServer = false;
-		}
-		StringBuilder msg = new StringBuilder();
-	    Date now = new Date();
-		DateFormat dateFormat = new SimpleDateFormat("EEEE HH:mm z");
-		msg.append("<p>");
-        msg.append(dateFormat.format(now));
-		msg.append(" ");
-        msg.append(user);
-		msg.append(": ");
-		msg.append(message);
-		msg.append("</p>\n");
-		messages.add(msg.toString());
-	}
+    public void addMessage(String user, String message) {
+    	if (message==null || message.trim().length()==0) {  
+    		// Empty messages are used on the web side to trigger websocket
+    		// messages to trigger ajax updates to pages, but don't add
+    		// empty messages to the list of messages.
+    		logger.log(Level.INFO, "empty message, not added to list");
+    	} else { 
+
+    		if (messages.size()>100) {
+    			messages.remove(0);
+    		}
+    		message.replaceAll("<", "&lt;");
+    		message.replaceAll(">", "&gt;");
+    		if (user.equals(SERVER_MESSAGE_SOURCE)) {
+    			latestFromServer = true;
+    		} else {
+    			latestFromServer = false;
+    		}
+    		StringBuilder msg = new StringBuilder();
+    		Date now = new Date();
+    		DateFormat dateFormat = new SimpleDateFormat("EEEE HH:mm z");
+    		msg.append("<p>");
+    		msg.append(dateFormat.format(now));
+    		msg.append(" ");
+    		msg.append(user);
+    		msg.append(": ");
+    		msg.append(message);
+    		msg.append("</p>\n");
+    		messages.add(msg.toString());
+    	} 
+    }
 
 	public int getUserCount() {
 		return userCount;
 	}
-
-//	public void setUserCount(int userCount) {
-//		this.userCount = userCount;
-//	}
 
 	public void incrementUserCount() {
 		userCount ++;
@@ -103,24 +99,22 @@ public class MessageBean  {
 		return messages.size();
 	}
 	
+	/**
+	 * Update the list of current logged in usernames.
+	 * 
+	 * @param currentuserset set of strings of current usernames.  
+	 */
 	public void updateCurrentUserList(Set<String> currentuserset) {
 		
 		logger.log(Level.INFO, "currentuserset.size() = " + Integer.toString(currentuserset.size()));
 		
 		if (currentuserset!=null && !currentuserset.isEmpty()) {
 			Set<String> currentusers = new HashSet<String>(); 
-			// look up fullnames for currentusers usernames
 			Iterator <String> is = currentuserset.iterator();
 			while (is.hasNext()) { 
-			    String pname = is.next();
-			    String username = pname;
-			    // TODO: Update current users list from open websockets users.
-//			    logger.log(Level.INFO, "current username: " +  pname);
-//		        if (usersFacade.findByName(pname) != null) {
-//			       username = usersFacade.findByName(pname).getFullname();
-//		        }			
+			    String username = is.next();
 			    currentusers.add(username);
-			    logger.log(Level.INFO, "looked up as: " + username);
+			    logger.log(Level.INFO, "Added user: " + username);
 			}
 		    
 			// check that each user in the users list is also a current user, if not, remove.
@@ -142,22 +136,16 @@ public class MessageBean  {
 		    // reset the user count to the number of entries in the users list.
 		    userCount = users.size();
 		} else { 
-			// no current users, clear the list.
-			users.clear();
-			userCount = 0;
+			// no current users, expected initial condition.
+			logger.log(Level.INFO, "updateCurrentUserList called with empty list");
 		}
 	}
 
-//	public void setUserList(List<String> userList) {
-//		if (userList!=null) { 
-//			users.clear();
-//			Iterator<String> i = userList.iterator();
-//			while (i.hasNext()) { 
-//				users.add(i.next());
-//			}
-//		}
-//	}
-//	
+	/**
+	 * Obtain the list of usernames of current active users.
+	 * 
+	 * @return list of strings of distinct usernames.
+	 */
 	public List<String> getUserList() { 
 		return users;
 	}
