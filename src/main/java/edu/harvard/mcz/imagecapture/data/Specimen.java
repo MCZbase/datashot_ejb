@@ -264,6 +264,10 @@ public class Specimen implements Serializable {
     private String creatingPath;   // A path for image file, denormalized from Image.path for JPA query without join to Image. 
     @Column(name = "creatingFilename", length = 255)
     private String creatingFilename; 
+    @Column(name = "locality_id", nullable = true)
+    private Long locality_id;
+    @Column(name = "collecting_event_id", nullable = true)
+    private Long collecting_event_id;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "specimenId", fetch=FetchType.EAGER, orphanRemoval=true)
     private Collection<Determination> determinationCollection;
     @OneToMany(mappedBy = "specimenId", fetch=FetchType.EAGER)
@@ -708,6 +712,38 @@ public class Specimen implements Serializable {
 
  
     /**
+	 * @return the locality_id
+	 */
+	public Long getLocality_id() {
+		return locality_id;
+	}
+
+
+	/**
+	 * @param locality_id the locality_id to set
+	 */
+	public void setLocality_id(Long locality_id) {
+		this.locality_id = locality_id;
+	}
+
+
+	/**
+	 * @return the collecting_event_id
+	 */
+	public Long getCollecting_event_id() {
+		return collecting_event_id;
+	}
+
+
+	/**
+	 * @param collecting_event_id the collecting_event_id to set
+	 */
+	public void setCollecting_event_id(Long collecting_event_id) {
+		this.collecting_event_id = collecting_event_id;
+	}
+
+
+	/**
 	 * @return the verbatimCollector
 	 */
 	public String getVerbatimCollector() {

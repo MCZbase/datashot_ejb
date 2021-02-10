@@ -230,6 +230,8 @@ public class MetadataRetriever {
             if (fieldname.equalsIgnoreCase("LastUpdatedBy")){ length=255;  }
             if (fieldname.equalsIgnoreCase("ValidDistributionFlag")) {  length = 1; }
             if (fieldname.equalsIgnoreCase("Path")) { length=900; }
+            if (fieldname.equalsIgnoreCase("locality_id")) {  length=20; } 
+            if (fieldname.equalsIgnoreCase("collecting_event_id")) {  length=20; } 
 		}
 		if (aTableClass==OtherNumbers.class) { 
 			if (fieldname.equalsIgnoreCase("OtherNumber")) { length=50; }	
@@ -413,6 +415,8 @@ public class MetadataRetriever {
             if (fieldname.equalsIgnoreCase("DateLastUpdated")) { help="The date and time at which this record was most recently updated."; }
             if (fieldname.equalsIgnoreCase("LastUpdatedBy")){ help="The name of the person who most recenly updated this record.";  }
             if (fieldname.equalsIgnoreCase("ValidDistributionFlag")) {  help = "Uncheck if the locality does not reflect the collection of this specimen from nature (e.g. uncheck for specimens that came from a captive breeding program).  Leave checked if locality represents natural biological range. "; }
+            if (fieldname.equalsIgnoreCase("locality_id")){ help="MCZbase locality_id to use for this record, if used, locality and higher geography values will be ignored on ingest into MCZbase.";  }
+            if (fieldname.equalsIgnoreCase("collecting_event_id")){ help="MCZbase collecting_event_id to use for this record, if used, higher geography, locality, and collecing event values will be ignored on ingest into MCZbase.";  }
 		}
 		if (aTableClass==OtherNumbers.class) { 
 			if (fieldname.equalsIgnoreCase("OtherNumber")) { help="A number (including alphanumeric identifiers) found on a label of this specimen. Are there any numbers, of known or unknown nature on the label or on separate labels? "; }
