@@ -2,7 +2,7 @@ package edu.harvard.mcz.imagecapture.data;
 
 import java.io.Serializable;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 import java.math.BigInteger;
 import java.math.BigDecimal;

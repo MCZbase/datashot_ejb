@@ -7,7 +7,7 @@ package edu.harvard.mcz.imagecapture.ejb;
 
 import edu.harvard.mcz.imagecapture.PositionTemplate;
 import edu.harvard.mcz.imagecapture.exceptions.NoSuchTemplateException;
-import javax.ejb.Local;
+import jakarta.ejb.Local;
 
 /**
  *

@@ -10,9 +10,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import javax.annotation.security.DeclareRoles;
-import javax.annotation.security.RolesAllowed;
-import javax.ejb.Stateless;
+import jakarta.annotation.security.DeclareRoles;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.ejb.Stateless;
 import javax.imageio.ImageIO;
 //import org.apache.commons.logging.Log;
 //import org.apache.commons.logging.LogFactory;
@@ -72,7 +72,7 @@ public class ImageFileLoaderBean implements ImageFileLoaderBeanRemote, ImageFile
 		URL result = null;
 		try {
 	             //result = new URL(pathToImages + filename);
-	             result = new URL("http://localhost:8086/test/faces/javax.faces.resource/images/IMG_042798_small.JPG");
+	             result = new URL("http://localhost:8086/test/faces/jakarta.faces.resource/images/IMG_042798_small.JPG");
 	        } catch (MalformedURLException e1) {
 
 		} catch (IOException e) {

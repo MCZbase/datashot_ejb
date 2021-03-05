@@ -6,9 +6,9 @@
 package edu.harvard.mcz.imagecapture.ejb;
 
 import edu.harvard.mcz.imagecapture.data.MetadataRetriever;
-import javax.annotation.security.DeclareRoles;
-import javax.annotation.security.RolesAllowed;
-import javax.ejb.Stateless;
+import jakarta.annotation.security.DeclareRoles;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.ejb.Stateless;
 import javax.swing.InputVerifier;
 import javax.swing.text.MaskFormatter;
 

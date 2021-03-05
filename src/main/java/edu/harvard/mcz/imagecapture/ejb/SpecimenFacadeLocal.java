@@ -15,7 +15,7 @@ import edu.harvard.mcz.imagecapture.utility.CountValue;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import javax.ejb.Local;
+import jakarta.ejb.Local;
 
 /**
  *

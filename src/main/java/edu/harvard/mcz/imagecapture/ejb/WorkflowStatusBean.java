@@ -10,7 +10,7 @@ import edu.harvard.mcz.imagecapture.data.Users;
 import edu.harvard.mcz.imagecapture.data.WorkFlowStatus;
 import java.util.Iterator;
 import java.util.List;
-import javax.ejb.Stateless;
+import jakarta.ejb.Stateless;
 
 /**
  *

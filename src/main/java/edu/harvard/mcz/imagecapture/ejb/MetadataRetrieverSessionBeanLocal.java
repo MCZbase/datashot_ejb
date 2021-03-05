@@ -4,7 +4,7 @@
  */
 package edu.harvard.mcz.imagecapture.ejb;
 
-import javax.ejb.Local;
+import jakarta.ejb.Local;
 import javax.swing.InputVerifier;
 import javax.swing.text.MaskFormatter;
 

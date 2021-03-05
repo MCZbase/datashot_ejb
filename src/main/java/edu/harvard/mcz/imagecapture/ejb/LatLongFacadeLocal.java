@@ -9,7 +9,7 @@ import edu.harvard.mcz.imagecapture.data.LatLong;
 
 import java.util.List;
 
-import javax.ejb.Local;
+import jakarta.ejb.Local;
 
 /**
  *

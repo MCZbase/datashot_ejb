@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.ejb.Singleton;
+import jakarta.ejb.Singleton;
 
 /**
  * Maintains a list of up to 100 most recent messages, count of user logins/logouts, and a list of 

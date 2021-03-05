@@ -8,7 +8,7 @@ package edu.harvard.mcz.imagecapture.ejb;
 import edu.harvard.mcz.imagecapture.data.LifeStage;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.Stateless;
+import jakarta.ejb.Stateless;
 
 /**
  *

@@ -21,19 +21,19 @@ import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.annotation.security.DeclareRoles;
-import javax.annotation.security.RolesAllowed;
-import javax.ejb.EJB;
-import javax.faces.context.FacesContext;
-import javax.persistence.EntityManager;
-import javax.persistence.criteria.CollectionJoin;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.JoinType;
-import javax.persistence.criteria.Order;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
+import jakarta.annotation.security.DeclareRoles;
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.ejb.EJB;
+import jakarta.faces.context.FacesContext;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.criteria.CollectionJoin;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Expression;
+import jakarta.persistence.criteria.JoinType;
+import jakarta.persistence.criteria.Order;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 
 /**
@@ -125,16 +125,16 @@ public abstract class AbstractFacade<T> {
 	
 	@RolesAllowed(value = {"Administrator", "Data entry", "Full Access", "Editor", "Chief Editor"})
 	public List<T> findAll() {
-		javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+		jakarta.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
 		cq.select(cq.from(entityClass));
 		return getEntityManager().createQuery(cq).getResultList();
 	}
 
 	@RolesAllowed(value = {"Administrator", "Data entry", "Full Access", "Editor", "Chief Editor"})
 	public List<T> findRange(int[] range) {
-		javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+		jakarta.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
 		cq.select(cq.from(entityClass));
-		javax.persistence.Query q = getEntityManager().createQuery(cq);
+		jakarta.persistence.Query q = getEntityManager().createQuery(cq);
 		q.setMaxResults(range[1] - range[0]);
 		q.setFirstResult(range[0]);
 		return q.getResultList();
@@ -158,7 +158,7 @@ public abstract class AbstractFacade<T> {
 	@RolesAllowed(value = {"Administrator", "Data entry", "Full Access", "Editor", "Chief Editor"})
 	public List<T> findRangeQueryAndOr(int[] range, String[] sortFields, boolean sortOrder, Map<String, String> filters, boolean useAnd) {
 		CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
-		javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+		jakarta.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
 		cq.select(cq.from(entityClass));
 
 		logger.log(Level.INFO, "findRangeQueryAndOr on " + entityClass.getName());
@@ -236,7 +236,7 @@ public abstract class AbstractFacade<T> {
 		}
 		cq = this.constructCriteriaQuery(filters, useAnd, cq, cb, r, join, joini);
 		cq.distinct(true);
-		javax.persistence.Query q = getEntityManager().createQuery(cq);
+		jakarta.persistence.Query q = getEntityManager().createQuery(cq);
 		//logger.log(Level.INFO, q.unwrap(QueryImpl.class).getDatabaseQuery().getSQLString());
 		if (range.length>0) { 
 		   q.setMaxResults(range[1] - range[0]);
@@ -248,9 +248,9 @@ public abstract class AbstractFacade<T> {
 	@RolesAllowed(value = {"Administrator", "Data entry", "Full Access", "Editor", "Chief Editor"})
 	public int count() {
 		CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-		javax.persistence.criteria.Root<T> rt = cq.from(entityClass);
+		jakarta.persistence.criteria.Root<T> rt = cq.from(entityClass);
 		cq.select(getEntityManager().getCriteriaBuilder().count(rt));
-		javax.persistence.Query q = getEntityManager().createQuery(cq);
+		jakarta.persistence.Query q = getEntityManager().createQuery(cq);
 		return ((Long) q.getSingleResult()).intValue();
 	}
 
@@ -261,7 +261,7 @@ public abstract class AbstractFacade<T> {
 			result = count();
 		} else {
 			CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
-			javax.persistence.criteria.Root<T> rt = cq.from(entityClass);
+			jakarta.persistence.criteria.Root<T> rt = cq.from(entityClass);
 			CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
 			cq.select(cb.countDistinct(rt));
 			// See: http://stackoverflow.com/questions/6197591/how-to-do-a-distinct-count-in-jpa-critera-api
@@ -288,7 +288,7 @@ public abstract class AbstractFacade<T> {
 
 			cq = this.constructCriteriaQuery(filters, true, cq, cb, r, join, joini);
 		    cq.distinct(true);
-			javax.persistence.Query q = getEntityManager().createQuery(cq);
+			jakarta.persistence.Query q = getEntityManager().createQuery(cq);
 			// Should work, but just logs a null string.  See: http://antoniogoncalves.org/2012/05/24/how-to-get-the-jpqlsql-string-from-a-criteriaquery-in-jpa/
 			// logger.log(Level.INFO, q.unwrap(EJBQueryImpl.class).getDatabaseQuery().getSQLString());
 			result = ((Long) q.getSingleResult()).intValue();

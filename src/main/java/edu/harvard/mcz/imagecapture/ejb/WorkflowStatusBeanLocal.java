@@ -6,7 +6,7 @@
 package edu.harvard.mcz.imagecapture.ejb;
 
 import edu.harvard.mcz.imagecapture.data.Users;
-import javax.ejb.Local;
+import jakarta.ejb.Local;
 
 /**
  *

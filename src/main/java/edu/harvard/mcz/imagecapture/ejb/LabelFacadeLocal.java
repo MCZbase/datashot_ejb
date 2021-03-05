@@ -8,7 +8,7 @@ package edu.harvard.mcz.imagecapture.ejb;
 import edu.harvard.mcz.imagecapture.data.Label;
 import java.util.List;
 import java.util.Map;
-import javax.ejb.Local;
+import jakarta.ejb.Local;
 
 /**
  *
