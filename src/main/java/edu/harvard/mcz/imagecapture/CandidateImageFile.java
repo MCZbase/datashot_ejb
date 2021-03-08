@@ -434,7 +434,7 @@ public class CandidateImageFile {
 			  try {
 				  Metadata metadata = JpegMetadataReader.readMetadata(candidateFile);
 				  // [Exif] User Comment
-				  Directory exifDirectory = metadata.getDirectory(ExifSubIFDDirectory.class);
+				  Directory exifDirectory = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
 				  ExifSubIFDDescriptor descriptor = new ExifSubIFDDescriptor((ExifSubIFDDirectory) exifDirectory);
 				  exifComment = descriptor.getUserCommentDescription();
 				  System.out.println("Exif UserComment = " + exifComment);
