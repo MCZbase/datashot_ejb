@@ -31,10 +31,10 @@ public class ImageCaptureApp {
 	
 	private final static Logger logger = Logger.getLogger(ImageCaptureApp.class.getName());
 	
-	public static final String APP_VERSION = "1.3.1-SNAPSHOT";
+	public static final String APP_VERSION = "1.4.0";
 	public static final String APP_NAME = "RapidCaptureWeb";
 	public static final String APP_DESCRIPTION = "Rapid capture of data from images of pin Labels and pinned insect \nspecimens developed for the MCZ Lepidoptera collection";
-	public static final String APP_COPYRIGHT = "Copyright 2009-2017 President and Fellows of Harvard College";
+	public static final String APP_COPYRIGHT = "Copyright 2009-2021 President and Fellows of Harvard College";
     public static final String APP_CONTRIBUTORS = "Design: Brendan Haley, Linda Ford, Rodney Eastwood, Paul J. Morris.  Code: Paul J. Morris";
     public static final String APP_LIBRARIES = "Hibernate, Tesseract, ZXing, Log4J, drew.metadata.exif, iText";
     public static final String APP_REV = "$Rev: 258 $";  // ImageCapture.jar file will be one revision behind latest commit. 
